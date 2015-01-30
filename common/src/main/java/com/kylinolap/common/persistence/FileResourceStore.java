@@ -26,10 +26,14 @@ import java.util.ArrayList;
 import org.apache.commons.io.IOUtils;
 
 import com.kylinolap.common.KylinConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FileResourceStore extends ResourceStore {
 
     File root;
+
+    private static Logger logger = LoggerFactory.getLogger(FileResourceStore.class);
 
     public FileResourceStore(KylinConfig kylinConfig) {
         super(kylinConfig);
@@ -64,8 +68,10 @@ public class FileResourceStore extends ResourceStore {
         File f = file(resPath);
         if (f.exists() && f.isFile())
             return new FileInputStream(file(resPath));
-        else
+        else {
+            logger.info("path:" + f.toPath() + " not found");
             return null;
+        }
     }
 
     @Override
