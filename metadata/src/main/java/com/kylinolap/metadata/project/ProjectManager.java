@@ -93,6 +93,16 @@ public class ProjectManager {
         l2Cache.clear();
     }
 
+    private String name;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String toString() {
+        return "ProjectManager " + name + " l2Cache:" + l2Cache.toString();
+    }
+
     private void reloadAllProjects() throws IOException {
         ResourceStore store = getStore();
         List<String> paths = store.collectResourceRecursively(ResourceStore.PROJECT_RESOURCE_ROOT, ".json");
@@ -114,8 +124,10 @@ public class ProjectManager {
         ResourceStore store = getStore();
 
         ProjectInstance projectInstance = store.getResource(path, ProjectInstance.class, PROJECT_SERIALIZER);
-        if (projectInstance == null)
+        if (projectInstance == null) {
+            logger.warn("reload project at path:" + path + " not found");
             return null;
+        }
 
         projectInstance.init();
 

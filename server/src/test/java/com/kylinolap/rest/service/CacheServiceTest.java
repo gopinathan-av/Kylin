@@ -84,6 +84,8 @@ public class CacheServiceTest extends LocalFileMetadataTestCase {
                 }
             }
         })), "/");
+        getProjectManager(configA).setName("project manager A");
+        getProjectManager(configB).setName("project manager B");
         server.start();
     }
 
@@ -126,16 +128,16 @@ public class CacheServiceTest extends LocalFileMetadataTestCase {
 
     }
 
-    private CubeManager getCubeManager(KylinConfig config) throws Exception {
+    private static CubeManager getCubeManager(KylinConfig config) throws Exception {
         return CubeManager.getInstance(config);
     }
-    private ProjectManager getProjectManager(KylinConfig config) throws Exception {
+    private static ProjectManager getProjectManager(KylinConfig config) throws Exception {
         return ProjectManager.getInstance(config);
     }
-    private CubeDescManager getCubeDescManager(KylinConfig config) throws Exception {
+    private static CubeDescManager getCubeDescManager(KylinConfig config) throws Exception {
         return CubeDescManager.getInstance(config);
     }
-    private MetadataManager getMetadataManager(KylinConfig config) throws Exception {
+    private static MetadataManager getMetadataManager(KylinConfig config) throws Exception {
         return MetadataManager.getInstance(config);
     }
 

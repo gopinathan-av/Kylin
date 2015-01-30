@@ -245,4 +245,8 @@ class ProjectL2Cache {
         }
     }
 
+    @Override
+    public String toString() {
+        return projectCaches.toString();
+    }
 }
