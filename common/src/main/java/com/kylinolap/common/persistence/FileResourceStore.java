@@ -70,7 +70,18 @@ public class FileResourceStore extends ResourceStore {
             return new FileInputStream(file(resPath));
         else {
             logger.info("path:" + f.toPath() + " not found");
+            logDir(root);
             return null;
+        }
+    }
+
+    private void logDir(File root) {
+        if (root.isDirectory()) {
+            for (File file: root.listFiles()) {
+                logDir(file);
+            }
+        } else {
+            logger.info(root.toPath().toString());
         }
     }
 
