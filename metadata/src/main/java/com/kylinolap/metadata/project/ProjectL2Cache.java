@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.common.base.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -231,6 +232,11 @@ class ProjectL2Cache {
 
         ProjectCache(String project) {
             this.project = project;
+        }
+
+        @Override
+        public String toString() {
+            return Objects.toStringHelper(ProjectCache.class).add("realizations", realizations).toString();
         }
     }
 

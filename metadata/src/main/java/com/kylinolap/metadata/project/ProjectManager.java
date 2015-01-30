@@ -125,7 +125,7 @@ public class ProjectManager {
 
         ProjectInstance projectInstance = store.getResource(path, ProjectInstance.class, PROJECT_SERIALIZER);
         if (projectInstance == null) {
-            logger.warn("reload project at path:" + path + " not found");
+            logger.warn("reload project at path:" + path + " not found, this:" + this.toString());
             return null;
         }
 
