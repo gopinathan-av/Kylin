@@ -77,7 +77,7 @@ public class ProjectInstance extends RootPersistentEntity {
         if (project == null)
             throw new IllegalStateException("Trying to normalized a project name which is null");
 
-        return project.toUpperCase();
+        return project;
     }
 
     public static ProjectInstance create(String name, String owner, String description, List<RealizationEntry> realizationEntries) {
